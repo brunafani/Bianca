@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise de Carreira Internacional — Bianca Feijão</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1A1612;
+    --rose: #C9636A;
+    --rose-light: #F2D4D6;
+    --rose-pale: #FBF0F0;
+    --sage: #4A6741;
+    --sage-light: #D6E4D4;
+    --gold: #B8872A;
+    --gold-light: #F5E8C8;
+    --slate: #3D4A5C;
+    --slate-light: #D4DCE8;
+    --muted: #7A6F65;
+    --border: #E2D8CE;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --green: #0F6E56;
+    --green-light: #E1F5EE;
+    --terracotta: #9B4A2C;
+    --terracotta-light: #F5E5DC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .print-btn { display: none !important; }
+    body { background: white; }
+    .cover { min-height: auto; padding-bottom: 60px; }
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 32px; right: 32px;
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .1em;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,.25);
+    transition: background .2s;
+  }
+  .print-btn:hover { background: var(--gold); }
+
+  /* ── CAPA ── */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .cover-noise {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: .4;
+    pointer-events: none;
+  }
+
+  .cover-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,135,42,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,135,42,.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  .cover-accent {
+    position: absolute;
+    top: -120px; right: -80px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,135,42,.16) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-accent2 {
+    position: absolute;
+    bottom: 60px; left: -100px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(155,74,44,.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px;
+    max-width: 860px;
+  }
+
+  .cover-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .cover-label::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(44px, 6vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(250,247,242,.5);
+    margin-bottom: 56px;
+    line-height: 1.4;
+  }
+
+  .cover-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cover-meta-row {
+    font-size: 13px;
+    color: rgba(250,247,242,.4);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: .04em;
+  }
+  .cover-meta-row span { color: rgba(250,247,242,.75); }
+
+  .cover-footer {
+    position: relative;
+    z-index: 2;
+    padding: 28px 72px;
+    border-top: 1px solid rgba(250,247,242,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: rgba(250,247,242,.3);
+    letter-spacing: .08em;
+  }
+
+  .cover-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--gold);
+    background: rgba(184,135,42,.12);
+    border: 1px solid rgba(184,135,42,.25);
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: .06em;
+  }
+
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+  .stat-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* ── BODY WRAPPER ── */
+  .body-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 48px 120px;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 80px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--rose); }
+  .section-title em.gold { color: var(--gold); }
+  .section-title em.terra { color: var(--terracotta); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 60px 0;
+  }
+
+  /* ── STRENGTH CARDS ── */
+  .strength-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .strength-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 22px;
+  }
+  .strength-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .strength-card:nth-child(1) .strength-tag { color: var(--terracotta); }
+  .strength-card:nth-child(2) .strength-tag { color: var(--sage); }
+  .strength-card:nth-child(3) .strength-tag { color: var(--gold); }
+  .strength-text { font-size: 13.5px; color: var(--ink); line-height: 1.65; }
+
+  /* ── GAP CARDS ── */
+  .gap-list { display: flex; flex-direction: column; gap: 12px; }
+  .gap-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 24px;
+    display: grid;
+    grid-template-columns: 4px 1fr;
+    gap: 20px;
+    align-items: stretch;
+    position: relative;
+    overflow: hidden;
+  }
+  .gap-bar { border-radius: 4px; }
+  .gap-bar.alta { background: #E24B4A; }
+  .gap-bar.media { background: #EF9F27; }
+  .gap-bar.atencao { background: #1D9E75; }
+  .gap-content {}
+  .gap-priority {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .gap-priority.alta { background: #FCEBEB; color: #A32D2D; }
+  .gap-priority.media { background: #FAEEDA; color: #854F0B; }
+  .gap-priority.atencao { background: #E1F5EE; color: #0F6E56; }
+  .gap-title { font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 5px; }
+  .gap-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .gap-desc strong { color: var(--ink); font-weight: 500; }
+
+  /* ── OPORTUNIDADES ── */
+  .opp-list { display: flex; flex-direction: column; gap: 14px; }
+  .opp-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .opp-item::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+  .opp-item:nth-child(1)::before { background: var(--terracotta); }
+  .opp-item:nth-child(2)::before { background: var(--blue); }
+  .opp-item:nth-child(3)::before { background: var(--sage); }
+  .opp-item:nth-child(4)::before { background: var(--purple); }
+  .opp-item:nth-child(5)::before { background: var(--gold); }
+
+  .opp-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 12px;
+  }
+  .opp-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+  .opp-titles {}
+  .opp-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 3px;
+  }
+  .opp-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .opp-desc { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 14px; }
+  .opp-desc strong { color: var(--ink); font-weight: 500; }
+  .opp-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+  .opp-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: .04em;
+  }
+  .opp-item:nth-child(1) .opp-tag { background: var(--terracotta-light); color: var(--terracotta); }
+  .opp-item:nth-child(2) .opp-tag { background: var(--blue-light); color: var(--blue); }
+  .opp-item:nth-child(3) .opp-tag { background: var(--sage-light); color: var(--sage); }
+  .opp-item:nth-child(4) .opp-tag { background: var(--purple-light); color: var(--purple); }
+  .opp-item:nth-child(5) .opp-tag { background: var(--gold-light); color: var(--gold); }
+
+  /* ── VOCABULÁRIO ── */
+  .vocab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .vocab-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 20px;
+  }
+  .vocab-card:nth-child(1) { border-top: 3px solid var(--terracotta); }
+  .vocab-card:nth-child(2) { border-top: 3px solid var(--sage); }
+  .vocab-card:nth-child(3) { border-top: 3px solid var(--gold); }
+  .vocab-card:nth-child(4) { border-top: 3px solid var(--blue); }
+  .vocab-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .vocab-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .vocab-list li {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--ink);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .vocab-list li::before {
+    content: '→';
+    color: var(--muted);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 1px;
+  }
+
+  /* ── PRÓXIMOS PASSOS ── */
+  .steps-list { display: flex; flex-direction: column; gap: 0; }
+  .step-item {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    align-items: start;
+    padding: 20px 24px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .step-item::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+  }
+  .step-item:nth-child(1)::before { background: var(--terracotta); }
+  .step-item:nth-child(2)::before { background: var(--gold); }
+  .step-item:nth-child(3)::before { background: var(--blue); }
+  .step-item:nth-child(4)::before { background: var(--sage); }
+  .step-item:nth-child(5)::before { background: var(--purple); }
+
+  .step-timing {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+    padding-top: 2px;
+  }
+  .step-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .step-item:nth-child(1) .step-badge { background: var(--terracotta-light); color: var(--terracotta); }
+  .step-item:nth-child(2) .step-badge { background: var(--gold-light); color: var(--gold); }
+  .step-item:nth-child(3) .step-badge { background: var(--blue-light); color: var(--blue); }
+  .step-item:nth-child(4) .step-badge { background: var(--sage-light); color: var(--sage); }
+  .step-item:nth-child(5) .step-badge { background: var(--purple-light); color: var(--purple); }
+
+  .step-title { font-weight: 500; font-size: 14px; color: var(--ink); margin-bottom: 5px; }
+  .step-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .step-desc strong { color: var(--ink); font-weight: 500; }
+
+  /* ── DESTAQUE ── */
+  .highlight-box {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 48px 52px;
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 28px;
+  }
+  .highlight-box::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,135,42,.14) 0%, transparent 70%);
+  }
+  .highlight-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--cream);
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .highlight-para {
+    font-size: 14px;
+    line-height: 1.8;
+    color: rgba(250,247,242,.72);
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .highlight-para:last-child { margin-bottom: 0; }
+  .highlight-para strong { color: var(--cream); font-weight: 500; }
+  .highlight-para em { color: var(--gold); font-style: italic; }
+
+  /* ── EXEMPLO BULLET ── */
+  .example-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+  .example-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+  .example-col-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    color: var(--muted);
+  }
+  .example-col-label:first-child { border-right: 1px solid var(--border); }
+  .example-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .example-col {
+    padding: 18px 20px;
+    font-size: 13px;
+    line-height: 1.65;
+  }
+  .example-col:first-child {
+    border-right: 1px solid var(--border);
+    color: var(--muted);
+    background: #FDFCFA;
+  }
+  .example-col:last-child { color: var(--ink); }
+  .example-col strong { font-weight: 500; }
+  .example-col .highlight-word { color: var(--sage); font-weight: 500; }
+
+  /* ── CERT GRID ── */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .cert-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .cert-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .cert-icon.priority { background: var(--terracotta-light); border: 1px solid #E8C9B9; }
+  .cert-icon.optional { background: var(--gold-light); border: 1px solid #E8D4A0; }
+  .cert-name { font-weight: 500; font-size: 13.5px; color: var(--ink); margin-bottom: 3px; }
+  .cert-desc { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .cert-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+  }
+  .cert-badge.priority { background: var(--terracotta-light); color: var(--terracotta); }
+  .cert-badge.optional { background: var(--gold-light); color: var(--gold); }
+</style>
+</head>
+<body>
+
+<!-- ── CAPA ── -->
+<div class="cover">
+  <div class="cover-noise"></div>
+  <div class="cover-grid"></div>
+  <div class="cover-accent"></div>
+  <div class="cover-accent2"></div>
+
+  <div class="cover-content">
+    <div class="cover-label">Diagnóstico de Perfil Internacional</div>
+    <h1 class="cover-title">Bianca<br><em>Feijão</em></h1>
+    <p class="cover-subtitle">Arquiteta, pesquisadora e autora<br>entre o Brasil e o mundo</p>
+    <div class="cover-meta">
+      <div class="cover-meta-row">modalidade · <span>Diagnóstico de Perfil Internacional</span></div>
+      <div class="cover-meta-row">documentos analisados · <span>CV em inglês + Portfolio 2018–2025</span></div>
+      <div class="cover-meta-row">entregue em · <span>Maio de 2026</span></div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="cover-footer-text">Para uma Carreira sem Fronteiras · Mentoria Internacional</div>
+    <div class="cover-tag">Arquitetura & Pesquisa</div>
+  </div>
+</div>
+
+<!-- ── CORPO ── -->
+<div class="body-wrap">
+
+  <!-- ── NÚMEROS ── -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num">8+</div>
+      <div class="stat-label">Anos de experiência acumulada</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Projetos no portfolio 2025</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">2×</div>
+      <div class="stat-label">Prêmios nacionais (CAU-CE + IAB)</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">UK</div>
+      <div class="stat-label">Experiência internacional (Bristol + Donald Insall)</div>
+    </div>
+  </div>
+
+  <!-- ── LEITURA DO PERFIL ── -->
+  <div class="section">
+    <div class="section-label">Leitura do perfil</div>
+    <h2 class="section-title">O que este CV e portfolio <em>já dizem</em> sobre você</h2>
+
+    <div class="highlight-box">
+      <div class="highlight-title">Você tem um posicionamento raro</div>
+      <p class="highlight-para">O seu perfil é incomum e, por isso, muito valorizado no mercado internacional: você transita com credibilidade entre a <strong>prática de projeto</strong> (obras executadas, coordenação de equipes, supervisão de obra) e a <strong>pesquisa crítica</strong> (mestrado na UFMG, dois livros publicados, premiados). Essa combinação, que no Brasil muitas vezes parece uma tensão, é exatamente o que programas de residência, escritórios boutique europeus, centros de pesquisa aplicada e ONGs de habitat procuram.</p>
+      <p class="highlight-para">A experiência no <strong>Donald Insall Associates (UK)</strong> durante o Science Without Borders, com foco em patrimônio arquitetônico, é um ativo real e imediato. É um escritório respeitado em Londres e ter passado por lá, mesmo como intern, abre portas que um CV típico brasileiro não abre.</p>
+      <p class="highlight-para">O <em>livro premiado</em> sobre Arquitetura-Suporte para Moradia Popular é o seu diferencial mais forte. No contexto internacional de housing research, social sustainability e participatory design, esse trabalho fala a linguagem de institutos como Shelter UK, UN-Habitat, LACAC e programas de pesquisa em universidades europeias e anglo-saxônicas.</p>
+    </div>
+
+    <div class="strength-grid">
+      <div class="strength-card">
+        <div class="strength-tag">Ativo #1 · Pesquisa</div>
+        <div class="strength-text">Dois volumes publicados sobre design participativo e moradia popular, premiados pelo CAU-CE e finalistas do IAB Nacional 2025. Credencial rara, com alcance real em redes acadêmicas e de políticas habitacionais internacionais.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-tag">Ativo #2 · Experiência UK</div>
+        <div class="strength-text">Internship no Donald Insall Associates (Londres) e intercâmbio na University of the West of England (Bristol). Familiaridade real com o mercado britânico, que é uma das portas de entrada mais valiosas para o contexto europeu de arquitetura e patrimônio.</div>
+      </div>
+      <div class="strength-card">
+        <div class="strength-tag">Ativo #3 · Portfolio</div>
+        <div class="strength-text">Quatro projetos com escopo diverso (habitação social, infraestrutura, patrimônio ambiental e instalação temporária) mostram amplitude e capacidade de trabalhar em múltiplos contextos. A Bienal de SP (2025) confere visibilidade cultural de alto nível.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── GAPS DE CV ── -->
+  <div class="section">
+    <div class="section-label">Análise do CV</div>
+    <h2 class="section-title">Gaps de vocabulário e <em>estrutura</em></h2>
+
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.7;">O CV em inglês está funcional e bem escrito no geral — mas alguns ajustes de enquadramento e vocabulário aumentariam significativamente a leitura por recrutadores internacionais e sistemas ATS.</p>
+
+    <div class="gap-list">
+
+      <div class="gap-item">
+        <div class="gap-bar alta"></div>
+        <div class="gap-content">
+          <div class="gap-priority alta">Prioridade Alta</div>
+          <div class="gap-title">Ausência de headline / positioning statement</div>
+          <div class="gap-desc">O seu CV começa diretamente com "Awards and Honors" sem uma linha de posicionamento. Para o mercado internacional, o nome precisa ser acompanhado de um headline de 1 a 2 linhas que oriente o leitor: <strong>quem você é, para qual mercado e com qual foco</strong>. Algo como "Architect and researcher specialising in participatory housing design, social sustainability, and urban planning, with academic and professional experience in Brazil and the United Kingdom."</div>
+        </div>
+      </div>
+
+      <div class="gap-item">
+        <div class="gap-bar alta"></div>
+        <div class="gap-content">
+          <div class="gap-priority alta">Prioridade Alta</div>
+          <div class="gap-title">Awards no topo sem contexto: lógica invertida</div>
+          <div class="gap-desc">Começar com prêmios é incomum no formato anglo-saxônico e pode confundir recrutadores que não conhecem o CAU-CE ou o IAB. Recomenda-se mover Awards para o final (ou após Educação) e abrir com um <strong>Professional Summary</strong> seguido de Experience. O destaque dos prêmios deve aparecer no próprio bullet da experiência correspondente, por exemplo: "…resulting in a two-volume publication <strong>awarded 1st Place at the CAU-CE Literary Prize and shortlisted for the IAB National Award 2025</strong>."</div>
+        </div>
+      </div>
+
+      <div class="gap-item">
+        <div class="gap-bar alta"></div>
+        <div class="gap-content">
+          <div class="gap-priority alta">Prioridade Alta</div>
+          <div class="gap-title">Experiência na Rede Arquitetos sem quantificações ou escopo claro</div>
+          <div class="gap-desc">A entrada atual como "Partner" da Rede Arquitetos está genérica. O mercado internacional valoriza especificidade: <strong>escala dos projetos, orçamento, equipe, impacto</strong>. Mencionar que o estúdio foi selecionado para a 14ª Bienal Internacional de SP é um dado concreto e valioso. O bullet do Solo Comum precisa aparecer com mais destaque: "Co-developed <em>Solo Comum</em> pavilion, selected for the 14th São Paulo International Architecture Biennial (2025), exploring low-carbon construction methods using ecological brick."</div>
+        </div>
+      </div>
+
+      <div class="gap-item">
+        <div class="gap-bar media"></div>
+        <div class="gap-content">
+          <div class="gap-priority media">Prioridade Média</div>
+          <div class="gap-title">Internship no Donald Insall Associates está subvalorizado</div>
+          <div class="gap-desc">A entrada está correta mas minimalista. Para quem lê o seu CV no mercado britânico, Donald Insall Associates é um nome reconhecido. Mas o bullet precisa dizer <strong>o que você efetivamente fez</strong>: tipo de patrimônio, método, escala dos projetos. Por exemplo: "Contributed to architectural heritage conservation projects across Grade I and II listed buildings in England, focusing on condition assessments and technical documentation."</div>
+        </div>
+      </div>
+
+      <div class="gap-item">
+        <div class="gap-bar media"></div>
+        <div class="gap-content">
+          <div class="gap-priority media">Prioridade Média</div>
+          <div class="gap-title">Seção de idiomas incompleta: nível de espanhol não especificado</div>
+          <div class="gap-desc">O seu CV lista "Spanish — Basic, in active development", o que é honesto mas pode limitar candidaturas para posições que requerem espanhol funcional (ONGs latinoamericanas, UN agencies, Habitat). Se o seu nível oral ou de leitura for B1+, vale mencionar o contexto específico: <strong>"Spanish — intermediate reading and conversational, actively developing"</strong>.</div>
+        </div>
+      </div>
+
+      <div class="gap-item">
+        <div class="gap-bar atencao"></div>
+        <div class="gap-content">
+          <div class="gap-priority atencao">Ponto de Atenção</div>
+          <div class="gap-title">Link do portfolio no rodapé do CV: torne-o mais visível</div>
+          <div class="gap-desc">O portfolio é um dos seus maiores ativos, mas o link aparece discretamente no rodapé. Inclua-o no header, ao lado do e-mail e do LinkedIn, com um rótulo claro: <strong>portfolio: [link]</strong>. Em candidaturas para residências e escritórios, o portfolio é frequentemente o primeiro ponto de contato. O CV é o complemento, não o inverso.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── VOCABULÁRIO ── -->
+  <div class="section">
+    <div class="section-label">Gaps de vocabulário</div>
+    <h2 class="section-title">As palavras que <em>o mercado quer ouvir</em></h2>
+
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.7;">Esses termos não são jargão vazio. São as palavras que recrutadores internacionais, comitês de bolsas e sistemas ATS usam para encontrar candidatas com o perfil da Bianca. Incorporá-los no CV, no LinkedIn e na carta de intenção aumenta drasticamente a visibilidade e o fit percebido.</p>
+
+    <div class="vocab-grid">
+      <div class="vocab-card">
+        <div class="vocab-category">Moradia & Território</div>
+        <ul class="vocab-list">
+          <li>participatory design</li>
+          <li>self-built housing</li>
+          <li>informal settlements</li>
+          <li>incremental housing</li>
+          <li>right to adequate housing</li>
+          <li>housing affordability</li>
+          <li>community-led design</li>
+        </ul>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-category">Pesquisa & Sustentabilidade</div>
+        <ul class="vocab-list">
+          <li>design research</li>
+          <li>applied research</li>
+          <li>low-carbon construction</li>
+          <li>circular economy (built environment)</li>
+          <li>ecological materials</li>
+          <li>climate-responsive design</li>
+          <li>urban resilience</li>
+        </ul>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-category">Patrimônio & Projeto</div>
+        <ul class="vocab-list">
+          <li>heritage conservation</li>
+          <li>listed buildings</li>
+          <li>adaptive reuse</li>
+          <li>executive project coordination</li>
+          <li>multidisciplinary team leadership</li>
+          <li>design development</li>
+          <li>technical documentation</li>
+        </ul>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-category">Academia & Publicação</div>
+        <ul class="vocab-list">
+          <li>peer-reviewed research</li>
+          <li>editorial coordination</li>
+          <li>public lecture / symposium</li>
+          <li>design criticism</li>
+          <li>architectural theory</li>
+          <li>knowledge dissemination</li>
+          <li>open architecture</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background:var(--gold-light);border:1px solid #E8D4A0;border-radius:12px;padding:18px 22px;margin-top:20px;font-size:13px;color:var(--ink);line-height:1.7;">
+      <strong>Exemplo prático:</strong> o seu portfolio já usa "collective design practices" e "architecture in contexts of environmental and social constraints", que é exatamente o registro certo. O objetivo é replicar essa precisão de linguagem em cada experiência do CV, não apenas no perfil do portfolio.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── EXEMPLO BULLET ── -->
+  <div class="section">
+    <div class="section-label">Transformação de linguagem</div>
+    <h2 class="section-title">De descrição para <em>impacto</em></h2>
+
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.7;">Dois exemplos concretos de como reescrever as experiências do CV para o padrão internacional. A diferença não é exagerar — é conectar ação, método e resultado de forma clara e concisa.</p>
+
+    <div class="example-box">
+      <div class="example-header">
+        <div class="example-col-label">Versão atual (descritiva)</div>
+        <div class="example-col-label">Versão internacional (orientada a impacto)</div>
+      </div>
+      <div class="example-body">
+        <div class="example-col">Responsible for company management and strategic coordination of architectural and urban planning projects. Leads multidisciplinary teams and coordinates collaboration with complementary design consultants and construction teams.</div>
+        <div class="example-col">Co-leads a boutique architecture studio specialising in social housing and public space, overseeing projects from concept to executive stage. Coordinated the design and construction of <span class="highlight-word">Solo Comum pavilion</span>, selected for the <span class="highlight-word">14th São Paulo International Architecture Biennial (2025)</span>, exploring low-carbon construction with ecological brick.</div>
+      </div>
+    </div>
+
+    <div class="example-box">
+      <div class="example-header">
+        <div class="example-col-label">Versão atual (descritiva)</div>
+        <div class="example-col-label">Versão internacional (orientada a impacto)</div>
+      </div>
+      <div class="example-body">
+        <div class="example-col">development of academic research · editorial coordination of the publication · planning and organization of public events and discussions</div>
+        <div class="example-col">Conducted applied research on participatory housing design in <span class="highlight-word">Fortaleza and Belo Horizonte</span>, culminating in a two-volume publication <span class="highlight-word">awarded 1st Place at the CAU-CE Literary Prize</span> and shortlisted for the IAB National Award 2025. Coordinated editorial production and convened public symposia on self-built housing as a field of social and technical innovation.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── OPORTUNIDADES ── -->
+  <div class="section">
+    <div class="section-label">5 oportunidades mapeadas</div>
+    <h2 class="section-title">Onde o seu perfil <em>tem tração real</em></h2>
+
+    <div class="opp-list">
+
+      <div class="opp-item">
+        <div class="opp-header">
+          <div class="opp-num">01</div>
+          <div class="opp-titles">
+            <div class="opp-title">Residências e bolsas internacionais em arquitetura e habitação</div>
+            <div class="opp-org">RIBA · AA London · ETH Zürich · Fundação Getty · TU Delft · LACAC</div>
+          </div>
+        </div>
+        <p class="opp-desc">O livro premiado, a pesquisa de mestrado e a experiência prática em territórios populares formam um portfólio de pesquisa-prática que é exatamente o que programas de residência e bolsas de pesquisa aplicada buscam. O <strong>RIBA Research Trust</strong> e o programa <strong>AA Visiting School</strong> têm chamadas abertas periodicamente. O <strong>LACAC (Latin American Center for Architectural Culture)</strong> e a <strong>Fundação Getty</strong> têm programas específicos para pesquisadoras latinoamericanas trabalhando com patrimônio e habitação. Este é o caminho de menor resistência para a sua internacionalização acadêmica com impacto real no CV.</p>
+        <div class="opp-tags">
+          <span class="opp-tag">Pesquisa aplicada</span>
+          <span class="opp-tag">Moradia popular</span>
+          <span class="opp-tag">Portfolio premiado</span>
+          <span class="opp-tag">Bolsa / residência</span>
+        </div>
+      </div>
+
+      <div class="opp-item">
+        <div class="opp-header">
+          <div class="opp-num">02</div>
+          <div class="opp-titles">
+            <div class="opp-title">Escritórios de arquitetura social e patrimônio no mercado britânico</div>
+            <div class="opp-org">Donald Insall Associates · Haworth Tompkins · Assemble · Studio Octopi · Pad Studio</div>
+          </div>
+        </div>
+        <p class="opp-desc">A sua passagem pelo Donald Insall Associates é o ativo mais imediato para reentrada no mercado britânico. Escritórios como <strong>Haworth Tompkins</strong> e <strong>Assemble</strong>, que têm trabalhos premiados em patrimônio e habitação social, são destinos naturais para quem tem esse background. O mercado UK valoriza muito profissionais com experiência internacional e foco em social impact. <strong>Part II / Architect Assistant</strong> e <strong>Project Architect</strong> são os títulos mais compatíveis. Você precisaria verificar as condições de visto (Graduate Route visa ou Skilled Worker), mas a sua qualificação e o histórico UK facilitam bastante.</p>
+        <div class="opp-tags">
+          <span class="opp-tag">Donald Insall</span>
+          <span class="opp-tag">Heritage conservation</span>
+          <span class="opp-tag">Social housing UK</span>
+          <span class="opp-tag">Londres / Bristol</span>
+        </div>
+      </div>
+
+      <div class="opp-item">
+        <div class="opp-header">
+          <div class="opp-num">03</div>
+          <div class="opp-titles">
+            <div class="opp-title">ONGs internacionais de habitat e urbanismo</div>
+            <div class="opp-org">UN-Habitat · Shelter UK · Cities Alliance · Slum Dwellers International · HIC</div>
+          </div>
+        </div>
+        <p class="opp-desc">A sua pesquisa sobre autogestão habitacional e direito à moradia adequada se encaixa diretamente nas agendas do <strong>UN-Habitat</strong> (Urban Resilience, Participatory Slum Upgrading) e da <strong>Habitat International Coalition (HIC)</strong>. O trabalho de campo em Fortaleza e Belo Horizonte com comunidades populares é exatamente o tipo de experiência que programas de urbanização de assentamentos informais buscam em consultoras e project officers. O Brasil, com sua escala urbana e experiência em programas como Minha Casa Minha Vida, é visto internacionalmente como laboratório de políticas habitacionais. Profissionais brasileiras com pesquisa crítica sobre o tema têm demanda real.</p>
+        <div class="opp-tags">
+          <span class="opp-tag">Habitat</span>
+          <span class="opp-tag">Assentamentos informais</span>
+          <span class="opp-tag">Fieldwork</span>
+          <span class="opp-tag">Policy</span>
+        </div>
+      </div>
+
+      <div class="opp-item">
+        <div class="opp-header">
+          <div class="opp-num">04</div>
+          <div class="opp-titles">
+            <div class="opp-title">Universidades e centros de pesquisa: professor visitante e investigadora</div>
+            <div class="opp-org">UCL Bartlett · Edinburgh School of Architecture · ETSAM Madrid · TU Delft · KU Leuven</div>
+          </div>
+        </div>
+        <p class="opp-desc">Com mestrado concluído e publicação premiada, você está em posição real de candidatura para <strong>Postdoctoral Research Fellowships</strong> e posições de <strong>Research Associate</strong> em universidades europeias com programas de housing e sustentabilidade. O Bartlett (UCL) tem o <strong>DPU (Development Planning Unit)</strong> com forte foco em moradia popular e urbanismo do Sul Global. A Universidade de Edinburgh e a TU Delft têm grupos de pesquisa em participatory design. O próximo passo acadêmico natural seria um doutorado com financiamento externo (CAPES sanduíche, Marie Curie, etc.), mas posições de research associate ou visiting scholar podem vir antes e abrir esse caminho.</p>
+        <div class="opp-tags">
+          <span class="opp-tag">Research fellowship</span>
+          <span class="opp-tag">Bartlett UCL</span>
+          <span class="opp-tag">Doutorado sanduíche</span>
+          <span class="opp-tag">Housing research</span>
+        </div>
+      </div>
+
+      <div class="opp-item">
+        <div class="opp-header">
+          <div class="opp-num">05</div>
+          <div class="opp-titles">
+            <div class="opp-title">Concursos internacionais de arquitetura e prêmios de design social</div>
+            <div class="opp-org">Dezeen Awards · ArchDaily Awards · Holcim Awards · Aga Khan Award · Blueprint Awards</div>
+          </div>
+        </div>
+        <p class="opp-desc">A Rede Arquitetos já tem um projeto na Bienal de SP 2025. O próximo passo é levar esse trabalho para concursos e prêmios internacionais que abrem portas de networking e visibilidade. Os <strong>Holcim Awards for Sustainable Construction</strong> são particularmente relevantes para o seu perfil (sustentabilidade e habitação). O <strong>Aga Khan Award for Architecture</strong> tem uma categoria específica para projetos em contextos de vulnerabilidade social, que é exatamente o território da sua pesquisa. Entrar nesses circuitos, mesmo como submissão, é uma forma poderosa de posicionamento estratégico no mercado internacional.</p>
+        <div class="opp-tags">
+          <span class="opp-tag">Holcim Awards</span>
+          <span class="opp-tag">Aga Khan</span>
+          <span class="opp-tag">Visibilidade</span>
+          <span class="opp-tag">Networking</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── COMO BUSCAR ── -->
+  <div class="section">
+    <div class="section-label">Como buscar vagas e oportunidades</div>
+    <h2 class="section-title">Onde procurar e o que <em>pesquisar</em></h2>
+
+    <p style="font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.7;">A busca de oportunidades internacionais para arquitetura e pesquisa não funciona como o LinkedIn brasileiro. Cada trilha tem suas plataformas, seus formatos e suas lógicas próprias.</p>
+
+    <!-- TRILHA 1 -->
+    <div style="margin-bottom:36px;">
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--terracotta);background:var(--terracotta-light);border:1px solid #E8C9B9;padding:5px 14px;border-radius:20px;">Trilha 1</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);">Bolsas, residências e pesquisa aplicada</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+
+        <div style="background:white;border:1px solid var(--border);border-top:3px solid var(--terracotta);border-radius:12px;padding:22px 24px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Títulos para pesquisar</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Research Fellowship" + housing</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Visiting Scholar" + architecture</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Architecture Residency" + social housing</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Postdoctoral Research" + participatory design</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Research Associate" + urban planning UK</div>
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid var(--border);border-top:3px solid var(--terracotta);border-radius:12px;padding:22px 24px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Plataformas e portais</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">RIBA Jobs</div>
+              <div style="font-size:12px;color:var(--muted);">ribajobs.co.uk — portal oficial do Royal Institute of British Architects. Inclui vagas em escritórios, research e academia.</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Findaphd.com</div>
+              <div style="font-size:12px;color:var(--muted);">Maior agregador de vagas de doutorado e pós-doc na Europa. Buscar por "housing", "participatory design", "social sustainability".</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">CAPES Bolsas Exterior</div>
+              <div style="font-size:12px;color:var(--muted);">capes.gov.br — doutorado sanduíche e pós-doutorado com financiamento brasileiro para quem já tem vínculo acadêmico.</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">ArchDaily Jobs</div>
+              <div style="font-size:12px;color:var(--muted);">archdaily.com/jobs — vagas internacionais em escritórios, com filtro por país e tipo de posição.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:var(--terracotta-light);border:1px solid #E8C9B9;border-radius:12px;padding:16px 20px;font-size:13px;color:var(--ink);line-height:1.7;">
+        <strong style="color:var(--terracotta);">Dica de busca:</strong> Para bolsas acadêmicas, o networking direto é mais eficaz do que portais genéricos. Identifique 2 ou 3 pesquisadoras seniores em universidades europeias com trabalho próximo ao seu e envie um e-mail direto com o portfolio e a publicação. A taxa de resposta é muito maior do que em candidaturas abertas.
+      </div>
+    </div>
+
+    <!-- TRILHA 2 -->
+    <div>
+      <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);background:var(--sage-light);border:1px solid #A8CFA6;padding:5px 14px;border-radius:20px;">Trilha 2</div>
+        <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:var(--ink);">Escritórios e ONGs — mercado UK e Europa</div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
+
+        <div style="background:white;border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:12px;padding:22px 24px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Títulos para pesquisar</div>
+          <div style="display:flex;flex-direction:column;gap:7px;">
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Architect" + heritage conservation UK</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Project Architect" + social housing</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Urban Designer" + community engagement</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Technical Officer" + UN-Habitat + housing</div>
+            <div style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);background:var(--cream);border:1px solid var(--border);border-radius:6px;padding:6px 12px;">"Programme Officer" + participatory design</div>
+          </div>
+        </div>
+
+        <div style="background:white;border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:12px;padding:22px 24px;">
+          <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">Plataformas e portais</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">UN-Habitat Careers</div>
+              <div style="font-size:12px;color:var(--muted);">unhabitat.org/careers — vagas globais na agência da ONU para assentamentos humanos e urbanismo.</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Dezeen Jobs</div>
+              <div style="font-size:12px;color:var(--muted);">dezeen.com/jobs — vagas em escritórios de arquitetura e design com filtro por país e área de atuação.</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">Websites dos escritórios-alvo</div>
+              <div style="font-size:12px;color:var(--muted);">Donald Insall, Haworth Tompkins, Assemble, Shelter UK — publicam vagas no próprio site antes de qualquer portal.</div>
+            </div>
+            <div>
+              <div style="font-size:13px;font-weight:500;color:var(--ink);margin-bottom:2px;">LinkedIn Jobs (UK)</div>
+              <div style="font-size:12px;color:var(--muted);">Filtrar localização "United Kingdom" + alertas por "architect" + "social housing" ou "heritage". Seguir os escritórios-alvo.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="background:var(--sage-light);border:1px solid #A8CFA6;border-radius:12px;padding:16px 20px;font-size:13px;color:var(--ink);line-height:1.7;">
+        <strong style="color:var(--sage);">Dica de busca:</strong> No LinkedIn UK, além dos alertas, conectar-se com ex-colegas do Donald Insall Associates e da UWE Bristol gera acesso antecipado a oportunidades e aumenta a chance de referência interna. O mercado britânico de arquitetura ainda funciona muito por networking.
+      </div>
+    </div>
+
+    <!-- DICA GERAL -->
+    <div style="background:var(--ink);border-radius:14px;padding:28px 32px;margin-top:28px;position:relative;overflow:hidden;">
+      <div style="position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(184,135,42,.12) 0%,transparent 70%);"></div>
+      <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;font-style:italic;color:var(--cream);margin-bottom:14px;position:relative;">Uma regra que vale para as duas trilhas</div>
+      <p style="font-size:13.5px;color:rgba(250,247,242,.72);line-height:1.75;position:relative;">Não candidate para vagas, candidate para pessoas. Antes de enviar qualquer candidatura, identifique a pesquisadora, o sócio ou o coordenador de programa no LinkedIn e conecte-se com uma mensagem curta e direta, mencionando a publicação, o projeto na Bienal ou o trabalho no Donald Insall. <strong style="color:var(--cream);">Candidaturas com contato prévio têm taxa de resposta significativamente mais alta</strong>, especialmente no mercado de pesquisa e arquitetura social, onde o fit de valores e visão é tão importante quanto o técnico.</p>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── CERTIFICAÇÕES / PASSOS ACADÊMICOS ── -->
+  <div class="section">
+    <div class="section-label">Credenciamento internacional</div>
+    <h2 class="section-title">O próximo <em class="gold">degrau</em></h2>
+
+    <p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.7;">Não é necessário fazer tudo agora. Mas conhecer o mapa ajuda a priorizar o investimento certo na hora certa.</p>
+
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon priority">🏛️</div>
+        <div>
+          <div class="cert-badge priority">Recomendado · UK</div>
+          <div class="cert-name">ARB / RIBA Parte III (UK)</div>
+          <div class="cert-desc">Para exercer como arquiteta registrada no Reino Unido. O processo inclui avaliação de portfólio, experiência prática e entrevista. Com a experiência no Donald Insall e na UWE, a Bianca está mais próxima desse caminho do que parece. Vale investigar o Part III Assessment via RIBA.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon priority">📚</div>
+        <div>
+          <div class="cert-badge priority">Recomendado · Pesquisa</div>
+          <div class="cert-name">Doutorado (PhD) com bolsa internacional</div>
+          <div class="cert-desc">O mestrado + a publicação premiada posicionam muito bem para candidaturas a PhD com financiamento externo (CAPES, Marie Curie, ESRC, EPSRC). UCL Bartlett, Edinburgh, TU Delft e KU Leuven têm programas diretamente alinhados com a pesquisa da Bianca. É o próximo passo acadêmico mais natural e estratégico.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon optional">🌿</div>
+        <div>
+          <div class="cert-badge optional">Considerar · Sustentabilidade</div>
+          <div class="cert-name">LEED AP ou BREEAM Assessor</div>
+          <div class="cert-desc">Certificações de sustentabilidade em edificações reconhecidas globalmente. BREEAM é padrão no mercado UK/europeu; LEED tem alcance americano e internacional. Aumentam a passabilidade em candidaturas para escritórios com projetos sustentáveis.</div>
+        </div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon optional">🌐</div>
+        <div>
+          <div class="cert-badge optional">Considerar · Idioma</div>
+          <div class="cert-name">IELTS Academic (7.0+)</div>
+          <div class="cert-desc">Para candidaturas a PhD em universidades UK e europeias anglófonas. Muitos programas exigem IELTS 7.0 ou equivalente. Com o inglês fluente da Bianca, a aprovação seria tranquila e o certificado abre portas administrativas que sem ele não abrem.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── PRÓXIMOS PASSOS ── -->
+  <div class="section">
+    <div class="section-label">Próximos passos</div>
+    <h2 class="section-title">O que fazer e <em>quando</em></h2>
+
+    <div class="steps-list">
+      <div class="step-item">
+        <div class="step-timing">Próximos<br>7 dias</div>
+        <div>
+          <div class="step-badge">Imediato</div>
+          <div class="step-title">Definir a trilha prioritária e reescrever o headline do CV</div>
+          <div class="step-desc">Você tem perfil forte em pelo menos três direções distintas (pesquisa acadêmica, escritório UK, ONGs de habitat). O risco é se candidatar para tudo ao mesmo tempo e não se destacar em nenhuma. <strong>Escolha a trilha 1 (ex.: bolsa de pesquisa / PhD) ou a trilha 2 (ex.: escritório UK / patrimônio)</strong> e crie um headline e summary específico para cada destino. O CV muda de posicionamento conforme o mercado. Não existe um CV que serve para todos.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-timing">Próximas<br>2–3 semanas</div>
+        <div>
+          <div class="step-badge">Faremos juntas</div>
+          <div class="step-title">Revisão do CV em inglês, experiência por experiência</div>
+          <div class="step-desc">Vamos rever cada entrada do seu CV alinhando o registro ao mercado-alvo escolhido. <strong>Foco: reposicionamento dos prêmios, fortalecimento dos bullets da Rede Arquitetos e do Donald Insall, e incorporação consistente das palavras-chave internacionais.</strong> O material já existe. O que fazemos aqui é refiná-lo para que soe natural e competitivo para recrutadores e comitês de seleção internacionais.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-timing">Próximas<br>2 semanas</div>
+        <div>
+          <div class="step-badge">Paralelo</div>
+          <div class="step-title">Atualizar LinkedIn com palavras-chave internacionais e link do portfolio</div>
+          <div class="step-desc">Escreva a About section em inglês com "participatory housing design", "social sustainability", "heritage conservation", "design research". <strong>Inclua o link do portfolio no header e na seção About.</strong> Ative o "Open to Work" para recrutadores. Conecte-se com ex-colegas da UWE e do Donald Insall Associates. Eles são a porta de entrada mais direta para o mercado britânico.</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-timing">Próximas<br>4–6 semanas</div>
+        <div>
+          <div class="step-badge">Planejado</div>
+          <div class="step-title">Mapear 3–5 oportunidades específicas e candidatar com personalização</div>
+          <div class="step-desc">Com CV e LinkedIn ajustados, inicie candidaturas específicas pela trilha escolhida. <strong>Qualidade sobre quantidade:</strong> uma candidatura bem escrita, com carta personalizada e contato prévio, tem muito mais retorno do que 30 candidaturas genéricas. Priorize: RIBA Jobs (escritórios UK), findaphd.com (pesquisa), Holcim Awards (concurso) e UN-Habitat Careers (ONGs).</div>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-timing">Próximos<br>3–6 meses</div>
+        <div>
+          <div class="step-badge">Médio Prazo</div>
+          <div class="step-title">Submeter a publicação a prêmios e redes internacionais</div>
+          <div class="step-desc">Os dois volumes sobre Arquitetura-Suporte para Moradia Popular merecem circulação internacional. <strong>Submeta aos Holcim Awards e ao Aga Khan Award for Architecture.</strong> Isso cria visibilidade e networking mesmo que não resulte em vitória. Envie o livro (ou um artigo derivado) para revistas como <em>Housing Policy Debate</em>, <em>Environment and Urbanization</em> ou <em>Journal of Housing and the Built Environment</em>. Isso consolida a sua presença acadêmica internacional de forma orgânica e duradoura.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RODAPÉ ── -->
+  <div style="text-align:center;padding-top:40px;border-top:1px solid var(--border);">
+    <div style="font-family:'Playfair Display',serif;font-size:20px;font-style:italic;color:var(--muted);margin-bottom:8px;">Para uma Carreira sem Fronteiras</div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;">Mentoria de Carreira Internacional · Diagnóstico de Perfil · Maio de 2026</div>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">↓ Salvar PDF</button>
+
+</body>
+</html>
