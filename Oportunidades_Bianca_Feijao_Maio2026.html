@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa de Oportunidades — Bianca Feijão</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF7F2;
+    --ink: #1A1612;
+    --terracotta: #9B4A2C;
+    --terracotta-light: #F5E5DC;
+    --sage: #4A6741;
+    --sage-light: #D6E4D4;
+    --gold: #B8872A;
+    --gold-light: #F5E8C8;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --muted: #7A6F65;
+    --border: #E2D8CE;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* CAPA */
+  .cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    page-break-after: always;
+  }
+  .cover-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(184,135,42,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(184,135,42,.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .cover-accent {
+    position: absolute; top: -120px; right: -80px;
+    width: 520px; height: 520px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,135,42,.16) 0%, transparent 70%);
+  }
+  .cover-accent2 {
+    position: absolute; bottom: 60px; left: -100px;
+    width: 400px; height: 400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(155,74,44,.10) 0%, transparent 70%);
+  }
+  .cover-content {
+    position: relative; z-index: 2;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px; max-width: 860px;
+  }
+  .cover-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: .18em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 32px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .cover-label::before {
+    content: ''; display: inline-block;
+    width: 32px; height: 1px; background: var(--gold);
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; font-weight: 900;
+    line-height: 1.05; color: var(--cream); margin-bottom: 12px;
+  }
+  .cover-title em { font-style: italic; color: var(--gold); }
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 400; font-style: italic;
+    color: rgba(250,247,242,.45);
+    margin-bottom: 56px; line-height: 1.5;
+  }
+  .cover-meta { display: flex; flex-direction: column; gap: 6px; }
+  .cover-meta-row {
+    font-size: 13px; color: rgba(250,247,242,.4);
+    font-family: 'DM Mono', monospace; letter-spacing: .04em;
+  }
+  .cover-meta-row span { color: rgba(250,247,242,.75); }
+  .cover-footer {
+    position: relative; z-index: 2;
+    padding: 28px 72px;
+    border-top: 1px solid rgba(250,247,242,.08);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .cover-footer-text {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; color: rgba(250,247,242,.3); letter-spacing: .08em;
+  }
+  .cover-tag {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--gold); background: rgba(184,135,42,.12);
+    border: 1px solid rgba(184,135,42,.25);
+    padding: 5px 14px; border-radius: 20px;
+  }
+
+  /* BODY */
+  .body-wrap { max-width: 860px; margin: 0 auto; padding: 60px 48px 100px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 700;
+    line-height: 1.2; margin-bottom: 32px; color: var(--ink);
+  }
+  .section-title em { font-style: italic; color: var(--terracotta); }
+
+  .divider { height: 1px; background: var(--border); margin: 50px 0; }
+
+  /* INTRO BOX */
+  .intro-box {
+    background: var(--ink); border-radius: 16px;
+    padding: 40px 48px; color: var(--cream);
+    position: relative; overflow: hidden; margin-bottom: 40px;
+  }
+  .intro-box::before {
+    content: ''; position: absolute; top: -60px; right: -60px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,135,42,.14) 0%, transparent 70%);
+  }
+  .intro-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700; font-style: italic;
+    color: var(--cream); margin-bottom: 16px; position: relative;
+  }
+  .intro-para {
+    font-size: 13.5px; line-height: 1.8;
+    color: rgba(250,247,242,.72); position: relative;
+  }
+  .intro-para strong { color: var(--cream); font-weight: 500; }
+  .intro-para em { color: var(--gold); }
+
+  /* VAGAS */
+  .vagas-list { display: flex; flex-direction: column; gap: 16px; }
+
+  .vaga-item {
+    background: white; border: 1px solid var(--border);
+    border-radius: 14px; padding: 24px 28px;
+    position: relative; overflow: hidden;
+  }
+  .vaga-item::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+  }
+  .vaga-item:nth-child(1)::before { background: var(--terracotta); }
+  .vaga-item:nth-child(2)::before { background: var(--blue); }
+  .vaga-item:nth-child(3)::before { background: var(--sage); }
+  .vaga-item:nth-child(4)::before { background: var(--purple); }
+  .vaga-item:nth-child(5)::before { background: var(--gold); }
+  .vaga-item:nth-child(6)::before { background: var(--teal); }
+  .vaga-item:nth-child(7)::before { background: var(--terracotta); }
+
+  .vaga-header { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 12px; }
+  .vaga-num {
+    font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+    background: var(--cream); border: 1px solid var(--border);
+    border-radius: 6px; width: 32px; height: 32px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .vaga-titles {}
+  .vaga-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; font-weight: 700;
+    color: var(--ink); line-height: 1.25; margin-bottom: 3px;
+  }
+  .vaga-org {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: .08em; color: var(--muted); text-transform: uppercase;
+  }
+
+  .vaga-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+  .badge {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    padding: 3px 10px; border-radius: 20px; letter-spacing: .04em;
+  }
+  .badge-remoto { background: var(--teal-light); color: var(--teal); }
+  .badge-local { background: var(--terracotta-light); color: var(--terracotta); }
+  .badge-presencial { background: var(--gold-light); color: var(--gold); }
+  .badge-hibrido { background: var(--blue-light); color: var(--blue); }
+  .badge-aberto { background: var(--sage-light); color: var(--sage); }
+  .badge-urgente { background: #FCEBEB; color: #A32D2D; }
+  .badge-encerrada { background: #F0F0F0; color: #888888; }
+
+  .vaga-desc { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+  .vaga-desc strong { color: var(--ink); font-weight: 500; }
+
+  .vaga-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+  .vaga-tag {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    padding: 3px 9px; border-radius: 20px;
+    background: var(--cream); border: 1px solid var(--border);
+    color: var(--muted); letter-spacing: .03em;
+  }
+
+  .vaga-link {
+    display: inline-block; margin-top: 10px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--blue); letter-spacing: .04em;
+    text-decoration: none;
+  }
+
+  /* DICA FINAL */
+  .dica-box {
+    background: var(--ink); border-radius: 14px;
+    padding: 28px 32px; margin-top: 40px;
+    position: relative; overflow: hidden;
+  }
+  .dica-box::before {
+    content: ''; position: absolute; top: -40px; right: -40px;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,135,42,.12) 0%, transparent 70%);
+  }
+  .dica-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; font-style: italic;
+    color: var(--cream); margin-bottom: 12px; position: relative;
+  }
+  .dica-text {
+    font-size: 13px; color: rgba(250,247,242,.72);
+    line-height: 1.75; position: relative;
+  }
+  .dica-text strong { color: var(--cream); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- CAPA -->
+<div class="cover">
+  <div class="cover-grid"></div>
+  <div class="cover-accent"></div>
+  <div class="cover-accent2"></div>
+  <div class="cover-content">
+    <div class="cover-label">Mapa de Oportunidades · Maio 2026</div>
+    <h1 class="cover-title">Bianca<br><em>Feijão</em></h1>
+    <p class="cover-subtitle">Vagas e bolsas abertas agora<br>para o seu perfil internacional</p>
+    <div class="cover-meta">
+      <div class="cover-meta-row">total de oportunidades · <span>7 vagas mapeadas</span></div>
+      <div class="cover-meta-row">modalidades · <span>remoto, híbrido e presencial</span></div>
+      <div class="cover-meta-row">atualizado em · <span>19 de maio de 2026</span></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <div class="cover-footer-text">Para uma Carreira sem Fronteiras · Mentoria Internacional</div>
+    <div class="cover-tag">Arquitetura & Pesquisa</div>
+  </div>
+</div>
+
+<!-- CORPO -->
+<div class="body-wrap">
+
+  <div class="section-label">Vagas abertas em maio de 2026</div>
+  <h2 class="section-title">Oportunidades para <em>candidatar agora</em></h2>
+
+  <div class="intro-box">
+    <div class="intro-title">Como usar este documento</div>
+    <p class="intro-para">Este mapa foi construído com base no seu perfil: pesquisadora-praticante com foco em habitação popular, design participativo, materiais ecológicos e patrimônio. As vagas estão organizadas por modalidade de trabalho e urgência. <strong>Priorize as remotas se quiser começar sem sair do Brasil.</strong> Para as presenciais, avalie a compatibilidade com o seu momento antes de candidatar. Em todos os casos, <em>candidate para pessoas, não para vagas</em>: identifique quem coordena o processo e entre em contato diretamente antes de submeter.</p>
+  </div>
+
+  <div class="vagas-list">
+
+    <!-- VAGA 1 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">01</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Consultant for Participatory Processes (ATHIS)</div>
+          <div class="vaga-org">UN-Habitat · CAU/SP · ABC · Brasil</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-local">Brasil</span>
+        <span class="badge badge-hibrido">Híbrido</span>
+        <span class="badge badge-encerrada">Encerrada · Abr 2026</span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:#888;margin-left:4px;">Monitorar próximas chamadas</span>
+      </div>
+      <p class="vaga-desc">Consultoria do UN-Habitat em parceria com o CAU/SP e a Agência Brasileira de Cooperação para capacitação em Assistência Técnica de Habitação de Interesse Social (ATHIS). <strong>Encaixe perfeito com o seu perfil:</strong> exige mestrado em Arquitetura ou áreas afins, experiência em processos participativos e habitação social, e knowledge of South-South Cooperation. É a entrada mais direta no sistema ONU sem sair do Brasil, com credencial imediata no CV.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">ATHIS</span>
+        <span class="vaga-tag">Habitação social</span>
+        <span class="vaga-tag">Design participativo</span>
+        <span class="vaga-tag">ONU · Brasil</span>
+      </div>
+      <a class="vaga-link" href="https://www.unjobnet.org/jobs/detail/85515559">unjobnet.org → buscar "UN-Habitat ATHIS Brazil"</a>
+    </div>
+
+    <!-- VAGA 2 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">02</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Urban Specialist — Informal Settlements and Climate Resilience</div>
+          <div class="vaga-org">Cities Alliance · UNOPS · Global</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-remoto">Remoto</span>
+        <span class="badge badge-encerrada">Req. África/Ásia</span>
+      </div>
+      <p class="vaga-desc">Cities Alliance busca consultoras especialistas em assentamentos informais, resiliência climática e inclusão social para apoiar implementação de programas globais. O trabalho envolve pesquisa, diagnósticos, ferramentas operacionais, gestão de grants e atividades de aprendizado entre pares. <strong>Pode ser feito do Brasil, remoto.</strong> A expertise em habitação popular, autoconstrução e trabalho de campo em Fortaleza e BH é diretamente relevante.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">Assentamentos informais</span>
+        <span class="vaga-tag">Resiliência climática</span>
+        <span class="vaga-tag">Remoto</span>
+        <span class="vaga-tag">UNOPS</span>
+      </div>
+      <a class="vaga-link" href="https://www.citiesalliance.org/who-we-are/work-with-us">citiesalliance.org/work-with-us</a>
+    </div>
+
+    <!-- VAGA 3 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">03</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Architect — Global Public Space Programme</div>
+          <div class="vaga-org">UN-Habitat · Global</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-hibrido">Híbrido</span>
+        <span class="badge badge-aberto">Aberta · candidatura contínua</span>
+      </div>
+      <p class="vaga-desc">Posição no Programa Global de Espaços Públicos do UN-Habitat, com responsabilidades em processos participativos, propostas de design urbano, materiais gráficos e relatórios para cidades parceiras ao redor do mundo. Exige experiência em design de espaços públicos e facilitação de workshops participativos, incluindo ferramentas digitais de engajamento. <strong>Forte sobreposição com o portfolio da Bianca:</strong> Solo Comum, Aquasis e o trabalho com espaços públicos na Certare.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">Espaços públicos</span>
+        <span class="vaga-tag">Participatory design</span>
+        <span class="vaga-tag">UN-Habitat</span>
+        <span class="vaga-tag">Global</span>
+      </div>
+      <a class="vaga-link" href="https://unhabitat.org/join-us">unhabitat.org/join-us</a>
+    </div>
+
+    <!-- VAGA 4 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">04</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Experimental Fellowship — Practice-Based Architectural Research</div>
+          <div class="vaga-org">Experimental Foundation + revalu · Berlim, Europa</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-presencial">Presencial · Berlim</span>
+        <span class="badge badge-encerrada">Encerrada · 4 Mai 2026</span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:#888;margin-left:4px;">Próxima edição: monitorar</span>
+      </div>
+      <p class="vaga-desc">Fellowship para práticas arquitetônicas emergentes com foco em pesquisa aplicada, materiais regenerativos, soluções circulares e de baixo carbono na construção. Oferece suporte financeiro, mentoria, acesso a laboratórios em Berlim e rede internacional de parceiros de pesquisa e indústria. <strong>Conexão direta com o Solo Comum:</strong> tijolo ecológico, autoconstrução com materiais locais e baixo carbono são exatamente os temas do edital.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">Materiais ecológicos</span>
+        <span class="vaga-tag">Low-carbon</span>
+        <span class="vaga-tag">Berlim</span>
+        <span class="vaga-tag">Financiamento</span>
+      </div>
+      <a class="vaga-link" href="https://www.revalu.io/journal/experimental-fellowship-2026-open-call-for-practice-based-architectural-research">revalu.io → Experimental Fellowship 2026</a>
+    </div>
+
+    <!-- VAGA 5 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">05</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Independent Project Residency — Summer 2026</div>
+          <div class="vaga-org">Institute for Public Architecture (IPA) · Governors Island, Nova York</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-presencial">Presencial · EUA</span>
+        <span class="badge badge-urgente">Deadline · 1 Jun 2026</span>
+      </div>
+      <p class="vaga-desc">Residência de 11 semanas para arquitetas, urbanistas e pesquisadoras com foco no espaço público. O ciclo Summer começa em junho de 2026. A IPA busca praticantes com foco desenvolvido que precisam de tempo e espaço para trabalhar de forma independente. <strong>Ideal para desenvolver um projeto derivado da pesquisa do livro</strong> em contexto internacional, com acesso à comunidade de Nova York e programação pública. Requer visto americano.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">Residência</span>
+        <span class="vaga-tag">Espaço público</span>
+        <span class="vaga-tag">Nova York</span>
+        <span class="vaga-tag">11 semanas</span>
+      </div>
+      <a class="vaga-link" href="https://instituteforpublicarchitecture.org/open-call">instituteforpublicarchitecture.org/open-call</a>
+    </div>
+
+    <!-- VAGA 6 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">06</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Open Architecture Collaborative — Voluntária e Colaboradora</div>
+          <div class="vaga-org">Open Architecture Collaborative · Global, Remoto</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-remoto">Remoto</span>
+        <span class="badge badge-aberto">Sempre aberta · sem deadline</span>
+      </div>
+      <p class="vaga-desc">Comunidade global de arquitetas, designers e profissionais do ambiente construído que trabalham com comunidades em situação de marginalização sistêmica. Não é uma vaga remunerada, mas é uma porta de entrada real para o ecossistema internacional de design social e para redes de pesquisa aplicada. <strong>O perfil da Bianca é exatamente o que eles buscam:</strong> participatory processes, social housing, community capacity building. Abre conexões com pesquisadoras nos EUA, Europa e Global South.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">Social design</span>
+        <span class="vaga-tag">Rede internacional</span>
+        <span class="vaga-tag">Remoto</span>
+        <span class="vaga-tag">Voluntária</span>
+      </div>
+      <a class="vaga-link" href="https://www.openarchcollab.org">openarchcollab.org</a>
+    </div>
+
+    <!-- VAGA 7 -->
+    <div class="vaga-item">
+      <div class="vaga-header">
+        <div class="vaga-num">07</div>
+        <div class="vaga-titles">
+          <div class="vaga-title">Holcim Foundation Awards 2026 — Submissão de Projeto</div>
+          <div class="vaga-org">Holcim Foundation for Sustainable Construction · Global</div>
+        </div>
+      </div>
+      <div class="vaga-badges">
+        <span class="badge badge-remoto">Remoto · Submissão online</span>
+        <span class="badge badge-encerrada">Aguardando chamada 2026</span>
+        <span style="font-family:'DM Mono',monospace;font-size:10px;color:#888;margin-left:4px;">Inscrever newsletter</span>
+      </div>
+      <p class="vaga-desc">A maior competição global em design sustentável, com USD 1 milhão em prêmios. O ciclo 2025 encerrou, mas a Fundação está lançando uma nova fase focada em desenvolvimento urbano responsável e já sinalizou novas chamadas. <strong>O Solo Comum e a pesquisa sobre autoconstrução com materiais ecológicos seriam entradas fortíssimas</strong> na categoria América Latina. Vale inscrever-se na newsletter para receber o lançamento da chamada 2026 em primeira mão.</p>
+      <div class="vaga-tags">
+        <span class="vaga-tag">Prêmio</span>
+        <span class="vaga-tag">Sustentabilidade</span>
+        <span class="vaga-tag">América Latina</span>
+        <span class="vaga-tag">USD 1M</span>
+      </div>
+      <a class="vaga-link" href="https://www.holcimfoundation.org">holcimfoundation.org</a>
+    </div>
+
+  </div>
+
+  <div class="dica-box">
+    <div class="dica-title">Uma regra que vale para todas as sete</div>
+    <p class="dica-text">Não candidate para vagas, candidate para pessoas. Antes de submeter qualquer candidatura, identifique quem coordena o processo, conecte no LinkedIn com uma mensagem direta sobre o seu livro, o projeto na Bienal ou o trabalho no Donald Insall, e estabeleça contato antes de enviar os documentos. <strong>Candidaturas com contato prévio têm taxa de resposta significativamente mais alta</strong> no mercado de pesquisa, arquitetura social e organismos multilaterais.</p>
+  </div>
+
+  <div style="text-align:center;padding-top:40px;border-top:1px solid var(--border);margin-top:40px;">
+    <div style="font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--muted);margin-bottom:6px;">Para uma Carreira sem Fronteiras</div>
+    <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;">Mentoria de Carreira Internacional · Maio de 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
